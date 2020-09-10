@@ -17,11 +17,11 @@ class DaoCadastro {
     if ($stmt) {
       $stmt->bind_param('i',$id);
       if ($stmt->execute()) {
-        $nome = '';$descricao=''; $valor=''; $quantidade='';
+        $nome = '';$descricao=''; $valor=0.0; $quantidade=0;
         $stmt->bind_result($nome, $descricao, $valor, $quantidade);
         $stmt->store_result();
         if ($stmt->num_rows == 1 && $stmt->fetch()) {
-          $cad = new Cadastro($nome, $id, $descricao, $valor, $quantidade);
+          $cad = new Cadastro($id, $nome, $descricao, $valor, $quantidade);
         }
       }
       $stmt->close();
@@ -86,11 +86,11 @@ class DaoCadastro {
     $cadastros = [];
     if ($stmt) {
       if ($stmt->execute()) {
-        $id = 0; $nome = ''; $descricao=''; $valor=''; $quantidade='';
+        $id = 0; $nome = ''; $descricao=''; $valor=0.0; $quantidade=0;
         $stmt->bind_result($id, $nome, $descricao, $valor, $quantidade);
         $stmt->store_result();
         while($stmt->fetch()) {
-          $cadastros[] = new cadastro($nome, $id, $descricao, $valor, $quantidade);
+          $cadastros[] = new cadastro($id, $nome, $descricao, $valor, $quantidade);
         }
       }
       $stmt->close();
