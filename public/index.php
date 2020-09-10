@@ -3,7 +3,8 @@
 require_once(__DIR__ . '/../templates/template-html.php');
 require_once(__DIR__ . '/../db/Db.php');
 require_once(__DIR__ . '/../model/Departamento.php');
-require_once(__DIR__ . '/../dao/DaoDepartamento.php');
+require_once(__DIR__ . '/../model/Cadastro.php');
+require_once(__DIR__ . '/../dao/DaoCadastro.php');
 require_once(__DIR__ . '/../config/config.php');
 require_once(__DIR__ . '/../model/Marca.php');
 require_once(__DIR__ . '/../dao/DaoMarca.php');
@@ -19,10 +20,12 @@ if (! $conn->connect()) {
 $daoMarca = new DaoMarca($conn);
 $daoProduto = new DaoProduto($conn);
 $daoDepartamento = new DaoDepartamento($conn);
+$daoCadastro = new DaoCadastro($conn);
 
 $marcas = $daoMarca->todos();
 $departamentos = $daoDepartamento->todos();
 $produtos = $daoProduto->todos();
+$Cadastros = $daoCadastro->todos();
 
 
 ob_start();
@@ -80,6 +83,24 @@ ob_start();
         }
         else
           echo "<h4>Nenhum produto cadastrado</h4>";
+      ?>
+    </div>
+         <!-- cadastro de produto generico -->
+    <div class="col-md-4" >
+      <h3>Cadastros</h3>
+      <?php 
+        if (count($Cadastros) >0) {
+          echo "<ul>";
+          foreach($Cadastros as $c) 
+            echo "<li>[" . $c->getId() . "] - " .
+                           $c->getNome() . 
+                           $c->getDescricao() .
+                           $c->getValor() .
+                           $c->getQuantidade() . "</li>";
+          echo "</ul>";
+        }
+        else
+          echo "<h4>Nenhum  cadastro</h4>";
       ?>
     </div>
 
