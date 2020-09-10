@@ -87,4 +87,4 @@ function testar_DaoDepartamento(): bool {
   }    
 }
 
-// testar_DaoDepartamento();
+ //testar_DaoDepartamento();

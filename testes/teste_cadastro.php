@@ -58,10 +58,10 @@ function DaoCad_testar_atualizar(Daocadastro $dao, Cadastro $cad): bool {
   $cad->setQuantidade( $novaQuantidade );
   if ( $dao->atualizar($cad) ) {
     $cadAtualizado = $dao->porId( $cad->getId() );
-    $ret = $cadAtualizado->getNome() === $novoNome;
-    $ret = $cadAtualizado->getDescricao() === $novaDescricao;
-    $ret = $cadAtualizado->getValor() === $novoValor;
-    $ret = $cadAtualizado->getQuantidade() === $novaQuantidade;
+    $ret = $cadAtualizado->getNome() === $novoNome &&
+     $cadAtualizado->getDescricao() === $novaDescricao &&
+     $cadAtualizado->getValor() === $novoValor &&
+     $cadAtualizado->getQuantidade() === $novaQuantidade;
   }
   echo ($ret) ? "Ok <br>\n" : "Erro <br>\n";
   return $ret;
@@ -104,4 +104,4 @@ function testar_Daocadastro(): bool {
   }    
 }
 
-// testar_DaoCadastro();
+ //testar_DaoCadastro();
