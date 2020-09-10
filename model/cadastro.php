@@ -51,6 +51,10 @@ class Cadastro {
 
    public function setQuantidade(int $quantidade) {
     $this->quantidade = $quantidade;
-}
+    }
+
+    public function getQuantidade(int $quantidade){
+        $this->quantidade;
+    }
   
 };

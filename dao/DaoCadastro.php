@@ -17,7 +17,7 @@ class DaoCadastro {
     if ($stmt) {
       $stmt->bind_param('i',$id);
       if ($stmt->execute()) {
-        $nome = '';
+        $nome = '';$descricao=''; $valor=''; $quantidade='';
         $stmt->bind_result($nome, $descricao, $valor, $quantidade);
         $stmt->store_result();
         if ($stmt->num_rows == 1 && $stmt->fetch()) {
@@ -86,7 +86,7 @@ class DaoCadastro {
     $cadastros = [];
     if ($stmt) {
       if ($stmt->execute()) {
-        $id = 0; $nome = '';
+        $id = 0; $nome = ''; $descricao=''; $valor=''; $quantidade='';
         $stmt->bind_result($id, $nome, $descricao, $valor, $quantidade);
         $stmt->store_result();
         while($stmt->fetch()) {
