@@ -119,4 +119,4 @@ function testar_DaoProduto(): bool {
   }    
 }
 
-//testar_DaoProduto();
+testar_DaoProduto();

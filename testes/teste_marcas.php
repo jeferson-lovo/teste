@@ -86,4 +86,4 @@ function testar_DaoMarca(): bool {
   }    
 }
 
- //testar_DaoMarca();
+ testar_DaoMarca();

@@ -104,4 +104,4 @@ function testar_Daocadastro(): bool {
   }    
 }
 
- //testar_DaoCadastro();
+ testar_DaoCadastro();
